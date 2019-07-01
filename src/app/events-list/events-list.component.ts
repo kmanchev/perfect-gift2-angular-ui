@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event } from '../events/event.model';
+import { Event } from '../_models/event';
 import { EVENTS } from '../events/events.mock';
 import { Router } from '@angular/router';
 
