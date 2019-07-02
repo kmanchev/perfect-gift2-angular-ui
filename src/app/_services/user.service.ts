@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../_models/user';
 import { Event } from '../_models/event';
 
@@ -8,12 +7,24 @@ import { Event } from '../_models/event';
 export class UserService {
     constructor(private http: HttpClient) { }
 
-    getAll() {
-        return this.http.get<User[]>(`http://localhost:4000/users/`);
+    getAllEvents(id: number) {
+        return this.http.get<Event[]>(`http://localhost:4000/users/${id}/events`);
     }
 
-    getAllEvents() {
-        return this.http.get<Event[]>(`http://localhost:4000/users/events`);
+    getEvent(eventId: String) {
+        return this.http.get(`http://localhost:4000/users/event/` + eventId);
+    }
+
+    createEvent(body: String, headers) {
+        return this.http.post(`http://localhost:4000/users/createEvent`, body, { headers });
+    }
+
+    deleteEvent(id: number) {
+        return this.http.delete(`http://localhost:4000/users/deleteEvent/${id}`);
+    }
+
+    getAll() {
+        return this.http.get<User[]>(`http://localhost:4000/users/`);
     }
 
     getById(id: number) {
@@ -32,15 +43,20 @@ export class UserService {
         return this.http.delete(`http://localhost:4000/users/${id}`);
     }
 
-    deleteEvent(id: number) {
-        return this.http.delete(`http://localhost:4000/users/deleteEvent/${id}`);
-    }
-
-    createEvent(body: String, headers) {
-        return this.http.post(`http://localhost:4000/users/createEvent`, body, {headers});
-    }
-
     inviteUserForEvent(body: String, headers) {
-        return this.http.post(`http://localhost:4000/users/invite`, body, {headers});
+        return this.http.post(`http://localhost:4000/users/invite`, body, { headers });
+    }
+
+    uploadPhoto(fileToUpload: File, eventId) {
+
+        const formData = new FormData();
+        formData.append('productImage',
+            fileToUpload,
+            fileToUpload.name);
+
+        const headers = new HttpHeaders();
+        headers.append('Content-Type', 'multipart/form-data');
+
+        return this.http.post(`http://localhost:4000/users/photoUpload/` + eventId, formData);
     }
 }

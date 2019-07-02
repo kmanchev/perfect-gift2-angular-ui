@@ -1,12 +1,14 @@
-<h2>My Events</h2>
-<ul class="heroes">
-  <li *ngFor="let event of events"
-    [class.selected]="event === selectedEvent"
-    (click)="onSelect(event)">
-    <span class="badge">{{event.id}}</span> {{event.eventName}}
-  </li>
+<h2 style="color: brown">My Events</h2>
+<ul class="events">
+  <div class="event-wrapper" style="background-color:lightblue; width: 420%" *ngFor="let event of events; let idx = index">
+    <li [class.selected]="event === selectedEvent" (click)="onSelect(event)">
+      <span class="badge">{{idx + 1}}</span> {{event.eventName}}
+    </li>
+    <button  class="btn btn-gray btn-sm pull-left" (click)="inviteUser()">Show Members</button>
+    <button  class="btn btn-gray btn-sm pull-left" (click)="inviteUser()">Invite...</button>
+  </div>
 </ul>
- 
+
 <!-- <div *ngIf="selectedHero">
  
   <h2>{{selectedEvent.eventName | uppercase}} Details</h2>

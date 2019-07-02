@@ -1,19 +1,43 @@
 import { Injectable } from '@angular/core'
+import { UserService } from '../../_services/user.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 @Injectable()
-export class ImageService{
-    visibleImages = [];
+export class ImageService {
 
-    getImages(){
-        return this.visibleImages = IMAGES.slice(0);
+    constructor(private http: HttpClient, private userService: UserService) { }
+
+    visibleImages = [];
+    homeUrl = 'http://localhost:4000/';
+
+    getImages(eventId: String) {
+        return this.userService.getEvent(eventId).pipe(
+            mergeMap(data => this.getImagesPayload(data))
+        );
     }
 
-    getImage(id: number){
+    getImagesPayload(data): Observable<any> {
+        const simpleObservable = new Observable((observer) => {
+
+            let images = [];
+            for (var i = 0; i < data.multimedia.length; i++) {
+                images.push({ id: i, url: this.homeUrl + data.multimedia[i] });
+            }
+            observer.next(images);
+            observer.complete();
+        })
+        return simpleObservable;
+    }
+
+
+    getImage(id: number) {
         return IMAGES.slice(0).find(image => image.id == id)
     }
 }
 
-const IMAGES =[
+const IMAGES = [
     /* {"id":1, "category": "boats", "caption": "View from the boat", "url":"assets/img/boat_01.jpeg"},
     {"id":2, "category": "boats", "caption": "Sailing the coast", "url":"assets/img/boat_02.jpeg"},
     {"id":3, "category": "boats", "caption": "The water was nice", "url":"assets/img/boat_03.jpeg"},
@@ -30,5 +54,5 @@ const IMAGES =[
     {"id":14, "category": "library", "caption": "Stacks", "url":"assets/img/library_02.jpeg"},
     {"id":15, "category": "library", "caption": "Saturday afternoon", "url":"assets/img/library_03.jpeg"},
     {"id":16, "category": "library", "caption": "Local library", "url":"assets/img/library_04.jpeg"}, */
-    {"id":17, "category": "library", "caption": "Nice library", "url":"http://localhost:4000/uploads/5d1b57e7cb33126d1b784186_2019-07-02T13:35:41.874Z_productImage"}
+    { "id": 17, "category": "library", "caption": "Nice library", "url": "http://localhost:4000/uploads/5d1b57e7cb33126d1b784186_2019-07-02T13:35:41.874Z_productImage" }
 ]

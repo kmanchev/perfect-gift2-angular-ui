@@ -1,8 +1,8 @@
 <div class="row">
         <h2>Event Media</h2>
         <button (click)="onReturn();">Return</button>
-        <input type="file" (change)="onFileSelected($event);">
-        <button (click)="onUpload();">Upload a file</button>
+        <input type="file" (change)="onFileSelected($event.target.files);">
+        <button type="button" (click)="onUpload();">Upload a file</button>
         <!-- <button class="btn btn-lg btn-info" [class.active]="filterBy==='all'" (click)="filterBy='all'">All</button> -->
 
         <ul id="thumbnailsList">

@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ImageDetailComponent } from './image/image-detail/image-detail.component';
+import { EventCreateComponent } from './event-create/event-create.component';
 
 const routes: Routes = [
   { path: '', component: EventsListComponent, canActivate: [AuthGuard] },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: "events", component: EventsListComponent, canActivate: [AuthGuard]},
+  { path: 'createEvent', component: EventCreateComponent, canActivate: [AuthGuard]},
   { path: "eventDetails/:id", component: EventDetailsComponent, canActivate: [AuthGuard]},];
 
 @NgModule({
