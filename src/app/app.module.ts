@@ -11,7 +11,6 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { ImageService } from './image/shared/image.service';
 import { ImageFilterPipe } from './image/shared/filter.pipe';
 import { AppComponent } from './app.component';
-import { ImageComponent } from './image/image.component';
 import { ImageDetailComponent } from './image/image-detail/image-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EventsListComponent } from './events-list/events-list.component';
@@ -23,7 +22,6 @@ import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ImageComponent,
     NavbarComponent,
     ImageDetailComponent,
     ImageFilterPipe,

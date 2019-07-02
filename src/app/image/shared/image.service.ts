@@ -14,7 +14,7 @@ export class ImageService{
 }
 
 const IMAGES =[
-    {"id":1, "category": "boats", "caption": "View from the boat", "url":"assets/img/boat_01.jpeg"},
+    /* {"id":1, "category": "boats", "caption": "View from the boat", "url":"assets/img/boat_01.jpeg"},
     {"id":2, "category": "boats", "caption": "Sailing the coast", "url":"assets/img/boat_02.jpeg"},
     {"id":3, "category": "boats", "caption": "The water was nice", "url":"assets/img/boat_03.jpeg"},
     {"id":4, "category": "boats", "caption": "Cool water cavern", "url":"assets/img/boat_04.jpeg"},
@@ -29,6 +29,6 @@ const IMAGES =[
     {"id":13, "category": "library", "caption": "Big library", "url":"assets/img/library_01.jpeg"},
     {"id":14, "category": "library", "caption": "Stacks", "url":"assets/img/library_02.jpeg"},
     {"id":15, "category": "library", "caption": "Saturday afternoon", "url":"assets/img/library_03.jpeg"},
-    {"id":16, "category": "library", "caption": "Local library", "url":"assets/img/library_04.jpeg"},
-    {"id":17, "category": "library", "caption": "Nice library", "url":"assets/img/library_05.jpeg"}
+    {"id":16, "category": "library", "caption": "Local library", "url":"assets/img/library_04.jpeg"}, */
+    {"id":17, "category": "library", "caption": "Nice library", "url":"http://localhost:4000/uploads/5d1b57e7cb33126d1b784186_2019-07-02T13:35:41.874Z_productImage"}
 ]

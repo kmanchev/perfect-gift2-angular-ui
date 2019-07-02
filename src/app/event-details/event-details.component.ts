@@ -10,6 +10,7 @@ import { ImageService } from '../image/shared/image.service';
 export class EventDetailsComponent implements OnInit {
   images: any[];
   visibleImages: any[] = [];
+  selectedFile: File;
 
   constructor(
     private imageService: ImageService,
@@ -30,6 +31,16 @@ export class EventDetailsComponent implements OnInit {
 
   onReturn(): void {
     this.router.navigate(['/events']);
+  }
+
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0]
+    console.log(event);
+  }
+
+  onUpload() {
+    console.log("upload triggered");
+    console.log(this.selectedFile);
   }
 
 }
