@@ -1,14 +1,26 @@
 <div class="row">
     <h2>Event Media</h2>
-    <button (click)="onReturn();">Return</button>
-    <input type="file" (change)="onFileSelected($event.target.files);">
-    <button type="button" (click)="onUpload();">Upload a file</button>
+    <div style="background-color:lightblue; width: 30%">
+        <input type="file" style="color: black" (change)="onFileSelected($event.target.files);">
+        <button type="button" style="float: right" (click)="onUpload();">Upload a file</button>
+    </div>
+    <button type="button" (click)="onDeleteContent();">Delete</button>
+
+    <button (click)="onReturn();" style="float: right;">Return</button>
     <!-- <button class="btn btn-lg btn-info" [class.active]="filterBy==='all'" (click)="filterBy='all'">All</button> -->
 
-    <ul *ngIf="visibleImagess | async; else loading" id="thumbnailsList">
-        <li *ngFor="let image of visibleImages">
-            <a [routerLink]="['/image', image.id]">
+    <ul *ngIf="!imagesToDeleteEnabled && visibleImagess | async; else loading" id="thumbnailsList">
+        <li  *ngFor="let image of visibleImages">
+            <a  [routerLink]="['/image', image.url]">
                 <img [src]="image.url" class="tn" width="200" height="160">
+            </a>
+        </li>
+    </ul>
+
+    <ul *ngIf="imagesToDeleteEnabled" id="thumbnailsList">
+        <li  *ngFor="let image of imagesToDelete">
+            <a  (click)="deleteImage(image)">
+                <img style="border: solid 1px red;" [src]="image.url" class="tn" width="200" height="160">
             </a>
         </li>
     </ul>

@@ -8,7 +8,7 @@ import {Location} from '@angular/common';
   styleUrls: ['./image-detail.component.css']
 })
 export class ImageDetailComponent {
-  image:any
+  url:any
 
   constructor(
     private location: Location,
@@ -16,9 +16,9 @@ export class ImageDetailComponent {
     private route: ActivatedRoute) { }
 
   ngOnInit(){
-    this.image = this.imageService.getImage(
-      +this.route.snapshot.params['id']
-    )
+    
+    this.url = this.route.snapshot.params['url'];
+    console.log(this.url);
   }
 
   return() {

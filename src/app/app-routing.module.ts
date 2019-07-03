@@ -10,7 +10,7 @@ import { EventCreateComponent } from './event-create/event-create.component';
 
 const routes: Routes = [
   { path: '', component: EventsListComponent, canActivate: [AuthGuard] },
-  { path: "image/:id", component: ImageDetailComponent, canActivate: [AuthGuard] },
+  { path: "image/:url", component: ImageDetailComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: "events", component: EventsListComponent, canActivate: [AuthGuard]},

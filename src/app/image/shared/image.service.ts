@@ -19,16 +19,17 @@ export class ImageService {
     }
 
     getImagesPayload(data): Observable<any> {
-        const simpleObservable = new Observable((observer) => {
-
+        const imageObserver = new Observable((observer) => {
+            console.log("from getIMagesPayload");
             let images = [];
             for (var i = 0; i < data.multimedia.length; i++) {
-                images.push({ id: i, url: this.homeUrl + data.multimedia[i] });
+                console.log(data.multimedia);
+                images.push({ id: i, url: this.homeUrl + data.multimedia[i].path, uploader: data.multimedia[i].uploader });
             }
             observer.next(images);
             observer.complete();
         })
-        return simpleObservable;
+        return imageObserver;
     }
 
 
