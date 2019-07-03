@@ -41,17 +41,6 @@ export class EventsListComponent implements OnInit {
       });
   }
 
-  /* toggleShowEvents() {
-    if (this.shouldShowEvents) {
-      this.messageService.sendMessage('hide events');
-      this.shouldShowEvents = false;
-    } else {
-      this.messageService.sendMessage('show events');
-      this.shouldShowEvents = true;
-    }
-    
-  } */
-
   onSelect(event: Event): void {
     this.router.navigate(['/eventDetails/' + event.id]);
   }

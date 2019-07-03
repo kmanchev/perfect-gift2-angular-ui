@@ -54,5 +54,5 @@ const IMAGES = [
     {"id":14, "category": "library", "caption": "Stacks", "url":"assets/img/library_02.jpeg"},
     {"id":15, "category": "library", "caption": "Saturday afternoon", "url":"assets/img/library_03.jpeg"},
     {"id":16, "category": "library", "caption": "Local library", "url":"assets/img/library_04.jpeg"}, */
-    { "id": 17, "category": "library", "caption": "Nice library", "url": "http://localhost:4000/uploads/5d1b57e7cb33126d1b784186_2019-07-02T13:35:41.874Z_productImage" }
+    { "id": 17, "category": "library", "caption": "Nice library", "url": "http://localhost:4000/uploads/5d1be0004cb4df173ebc7972_2019-07-02T22:52:09.468Z_boat_01.jpeg"}
 ]
