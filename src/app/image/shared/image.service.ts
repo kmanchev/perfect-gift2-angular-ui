@@ -24,7 +24,7 @@ export class ImageService {
             let images = [];
             for (var i = 0; i < data.multimedia.length; i++) {
                 console.log(data.multimedia);
-                images.push({ id: i, url: this.homeUrl + data.multimedia[i].path, uploader: data.multimedia[i].uploader });
+                images.push({ id: i, url: this.homeUrl + data.multimedia[i].path, uploader: data.multimedia[i].uploader, name: data.multimedia[i].name});
             }
             observer.next(images);
             observer.complete();

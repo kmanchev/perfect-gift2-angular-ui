@@ -59,4 +59,8 @@ export class UserService {
 
         return this.http.post(`http://localhost:4000/users/photoUpload/` + eventId, formData);
     }
+
+    deletePhoto(uploaderId: String, eventId: String, name: String) {
+        return this.http.delete('http://localhost:4000/users/deletePhoto/' + uploaderId + '/' + eventId + '/' + name);
+    }
 }

@@ -24,7 +24,6 @@ export class EventsListComponent implements OnInit {
 
   ngOnInit() {
     var loggedUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(loggedUser._id);
 
     //this is needed in order to update the navbar to visible
     this.messageService.sendMessage('loggedIn');

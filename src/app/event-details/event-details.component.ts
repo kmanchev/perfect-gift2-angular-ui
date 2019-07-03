@@ -88,7 +88,35 @@ export class EventDetailsComponent implements OnInit {
   }
 
   deleteImage(image) {
-    console.log(image);
+    this.userService.deletePhoto(image.uploader, this.selectedEventId, image.name).pipe(first())
+    .subscribe(data => {
+      console.log("success delete photo: " + data);
+      var spliceIndex = -1;
+      for (var i = 0; i < this.visibleImages.length; i ++) {
+        if (image.url == this.visibleImages[i].url) {
+          spliceIndex = i;
+          break;
+        }
+      }
+      if (spliceIndex != -1) {
+        this.visibleImages.splice(spliceIndex, 1);
+      }
+
+      var doDelSpliceIndex = -1
+      for (var i = 0; i < this.imagesToDelete.length; i++) {
+        if (image.url == this.imagesToDelete[i].url) {
+          doDelSpliceIndex = i;
+          break;
+        }
+      }
+      if (doDelSpliceIndex != -1) {
+        this.imagesToDelete.splice(doDelSpliceIndex, 1);
+      }
+    },
+      error => {
+        console.log("something went wrong while deleting");
+        console.log(error);
+      });
   }
 
 }
